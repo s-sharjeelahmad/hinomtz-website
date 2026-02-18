@@ -61,10 +61,18 @@
             --blue-700: #005a99;
             --blue-600: #006bb5;
             --blue-50:  #eff6ff;
+            --teal-700: #0d7377;
+            --teal-600: #14b8a6;
+            --teal-500: #2dd4bf;
+            --teal-50:  #e6fffa;
             --green-700: #1a7a32;
             --green-600: #1e8a3c;
-            --green-500: #28a745;
+            --green-500: #34c759;
             --green-50:  #f0fdf4;
+            --amber-700: #d97706;
+            --amber-600: #f59e0b;
+            --amber-500: #fbbf24;
+            --amber-50:  #fffbeb;
 
             /* Semantic aliases */
             --primary:      var(--blue-800);
@@ -262,8 +270,8 @@
             min-height: 88vh;
             display: flex; align-items: center;
             background:
-                linear-gradient(125deg, rgba(0,51,85,0.94) 0%, rgba(0,77,128,0.88) 100%),
-                url('background.jpg') center/cover no-repeat;
+                linear-gradient(125deg, rgba(0,51,85,0.75) 0%, rgba(0,77,128,0.45) 100%),
+                url('hero.png') center/cover no-repeat;
             color: white;
         }
         /* Hexagonal SVG pattern overlay */
@@ -382,7 +390,7 @@
         /* ── STATS OVERLAP BAR ───────────────── */
         .stats-bar {
             position: relative; z-index: 10;
-            margin-top: -52px;
+            margin-top: -40px;
         }
         .stats-bar-inner {
             background: white;
@@ -759,6 +767,11 @@
         }
 
         /* ── RESPONSIVE HELPERS ──────────────── */
+        @media (min-width: 860px) {
+            .about-grid { grid-template-columns: 1fr 1fr !important; }
+            .about-grid > div[style*="order:1"] { text-align: left !important; }
+            .about-grid .section-accent { margin-left: 0 !important; }
+        }
         @media (max-width: 640px) {
             .stat-item { border-right: none; border-bottom: 1px solid var(--gray-200); padding-bottom: 1rem; }
             .stat-item:last-child { border-bottom: none; }
@@ -895,7 +908,7 @@
                     <div class="stat-label">Year Founded</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-num">13+</div>
+                    <div class="stat-num">14+</div>
                     <div class="stat-label">Active Products</div>
                 </div>
                 <div class="stat-item">
@@ -917,16 +930,16 @@
                         <i class="fa-solid fa-leaf" style="color:var(--green-500);"></i> Eco-Compliant
                     </div>
                     <div class="compliance-badge">
-                        <i class="fa-solid fa-shield-halved" style="color:var(--blue-800);"></i> Safety Standards
+                        <i class="fa-solid fa-shield-halved" style="color:var(--teal-600);"></i> Safety Standards
                     </div>
                     <div class="compliance-badge">
-                        <i class="fa-solid fa-atom" style="color:var(--green-500);"></i> Nano Technology
+                        <i class="fa-solid fa-atom" style="color:var(--amber-600);"></i> Nano Technology
                     </div>
                     <div class="compliance-badge">
                         <i class="fa-solid fa-certificate" style="color:var(--blue-800);"></i> Quality Assured
                     </div>
                     <div class="compliance-badge">
-                        <i class="fa-solid fa-flask" style="color:var(--green-500);"></i> Lab Tested
+                        <i class="fa-solid fa-flask" style="color:var(--teal-700);"></i> Lab Tested
                     </div>
                 </div>
             </div>
@@ -958,9 +971,26 @@
         <!-- ═══ ABOUT ═════════════════════════════════════════════════════ -->
         <section id="about" class="section">
             <div class="section-inner">
-                <div style="display:grid; gap:4rem; grid-template-columns:1fr; align-items:center;" data-aos="fade-up">
-                    <!-- Left: text -->
-                    <div style="max-width:680px; margin:0 auto; text-align:center;">
+                <div style="display:grid; gap:3.5rem; grid-template-columns:1fr; align-items:center;" data-aos="fade-up" class="about-grid">
+                    <!-- Image (shown above text on mobile, right side on desktop via CSS order) -->
+                    <div style="order:2;" data-aos="fade-left" data-aos-delay="150">
+                        <div style="position:relative; border-radius:var(--r-2xl); overflow:hidden; box-shadow:var(--shadow-xl);">
+                            <img
+                                src="lab.png"
+                                alt="HINOMTZ laboratory — textile chemical research and development"
+                                style="width:100%; height:360px; object-fit:cover; display:block;"
+                                loading="lazy"
+                            >
+                            <!-- Subtle brand tint overlay on bottom -->
+                            <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,51,85,0.45) 0%, transparent 55%); pointer-events:none;"></div>
+                            <div style="position:absolute; bottom:1.25rem; left:1.25rem; display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.9); border-radius:var(--r-full); padding:7px 14px; font-family:var(--font-head); font-size:0.72rem; font-weight:700; color:var(--blue-800); letter-spacing:0.06em; text-transform:uppercase; backdrop-filter:blur(6px);">
+                                <i class="fa-solid fa-flask-vial" style="color:var(--green-500);"></i>
+                                R&amp;D Laboratory
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Text -->
+                    <div style="order:1; max-width:680px; margin:0 auto; text-align:center;">
                         <p class="label-caps" style="color:var(--green-600); margin-bottom:0.75rem;">Our Story</p>
                         <h2 class="section-title">About HINOMTZ PolyChem Zone</h2>
                         <div class="section-accent"></div>
@@ -1030,7 +1060,7 @@
         <div class="gradient-divider"></div>
 
         <!-- ═══ VISION & MISSION ═══════════════════════════════════════════ -->
-        <section id="vision" class="section" style="background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-800) 100%); color:white;">
+        <section id="vision" class="section" style="background: linear-gradient(135deg, rgba(0,33,55,0.96) 0%, rgba(0,77,128,0.93) 100%), url('tech.png') center/cover no-repeat fixed; color:white;">
             <div class="section-inner">
                 <div style="text-align:center; margin-bottom:3rem;" data-aos="fade-up">
                     <p class="label-caps" style="color:rgba(255,255,255,0.5); margin-bottom:0.5rem;">2026 Strategy</p>
@@ -1298,145 +1328,126 @@
                             </div>
                             <span class="application-tag">Cotton &bull; Blends</span>
                         </div>
-                        <div class="space-y-1">
+                        <div style="display:flex; flex-direction:column; gap:0.25rem;">
                             <div class="product-item">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <div class="text-sm font-semibold text-slate-800">NOMZWET CONC</div>
-                                        <div class="text-xs text-slate-600">Concentrated Wetting Agent</div>
-                                    </div>
-                                    <span class="dosage-badge">0.3-1 g/L</span>
+                                <div class="product-item-body">
+                                    <div style="font-size:0.88rem; font-weight:700; color:var(--gray-800); margin-bottom:2px;">NOMZWET CONC</div>
+                                    <div style="font-size:0.75rem; color:var(--gray-600);">Concentrated Wetting Agent</div>
                                 </div>
+                                <span class="dosage-badge">0.3-1 g/L</span>
                             </div>
                             <div class="product-item">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <div class="text-sm font-semibold text-slate-800">NOMZWET EPK</div>
-                                        <div class="text-xs text-slate-600">Wetting Agent</div>
-                                    </div>
-                                    <span class="dosage-badge">0.5-1.5 g/L</span>
+                                <div class="product-item-body">
+                                    <div style="font-size:0.88rem; font-weight:700; color:var(--gray-800); margin-bottom:2px;">NOMZWET EPK</div>
+                                    <div style="font-size:0.75rem; color:var(--gray-600);">Wetting Agent</div>
                                 </div>
+                                <span class="dosage-badge">0.5-1.5 g/L</span>
                             </div>
                             <div class="product-item">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <div class="text-sm font-semibold text-slate-800">Sequestering Agents</div>
-                                        <div class="text-xs text-slate-600">Water Softening</div>
-                                    </div>
-                                    <span class="dosage-badge">0.2-0.8 g/L</span>
+                                <div class="product-item-body">
+                                    <div style="font-size:0.88rem; font-weight:700; color:var(--gray-800); margin-bottom:2px;">Sequestering Agents</div>
+                                    <div style="font-size:0.75rem; color:var(--gray-600);">Water Softening</div>
                                 </div>
+                                <span class="dosage-badge">0.2-0.8 g/L</span>
                             </div>
                             <div class="product-item">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <div class="text-sm font-semibold text-slate-800">Peroxide Stabilizers</div>
-                                        <div class="text-xs text-slate-600">Bleaching Support</div>
-                                    </div>
-                                    <span class="dosage-badge">0.5-2 g/L</span>
+                                <div class="product-item-body">
+                                    <div style="font-size:0.88rem; font-weight:700; color:var(--gray-800); margin-bottom:2px;">Peroxide Stabilizers</div>
+                                    <div style="font-size:0.75rem; color:var(--gray-600);">Bleaching Support</div>
                                 </div>
+                                <span class="dosage-badge">0.5-2 g/L</span>
                             </div>
                             <div class="product-item">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <div class="text-sm font-semibold text-slate-800">NOMZPOK CNX</div>
-                                        <div class="text-xs text-slate-600">Levelling Agent</div>
-                                    </div>
-                                    <span class="dosage-badge">1-3% owf</span>
+                                <div class="product-item-body">
+                                    <div style="font-size:0.88rem; font-weight:700; color:var(--gray-800); margin-bottom:2px;">NOMZPOK CNX</div>
+                                    <div style="font-size:0.75rem; color:var(--gray-600);">Levelling Agent</div>
                                 </div>
+                                <span class="dosage-badge">1-3% owf</span>
                             </div>
                             <div class="product-item">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <div class="text-sm font-semibold text-slate-800">NOMZYME</div>
-                                        <div class="text-xs text-slate-600">Bio Polish</div>
-                                    </div>
-                                    <span class="dosage-badge">0.5-2% owf</span>
+                                <div class="product-item-body">
+                                    <div style="font-size:0.88rem; font-weight:700; color:var(--gray-800); margin-bottom:2px;">NOMZYME</div>
+                                    <div style="font-size:0.75rem; color:var(--gray-600);">Bio Polish</div>
                                 </div>
+                                <span class="dosage-badge">0.5-2% owf</span>
                             </div>
                         </div>
                     </div>
                     <div class="card product-card" data-aos="fade-up" data-aos-delay="100" data-category="finishing" style="display:block;">
                         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.25rem;">
-                            <div style="display:flex; align-items:center; gap:10px; color:var(--blue-800);">
+                            <div style="display:flex; align-items:center; gap:10px; color:var(--teal-700);">
                                 <i class="fa-solid fa-layer-group" style="font-size:1.3rem;"></i>
                                 <h3 style="font-family:var(--font-head); font-size:1.05rem; font-weight:700;">Finishing (Silicones)</h3>
                             </div>
                             <span class="application-tag">All Fabrics</span>
                         </div>
-                        <div class="space-y-1">
+                        <div style="display:flex; flex-direction:column; gap:0.25rem;">
                             <div class="product-item">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <div class="text-sm font-semibold text-slate-800">NOMZSIL S300</div>
-                                        <div class="text-xs text-slate-600">Hydrophilic Micro Silicon</div>
-                                    </div>
-                                    <span class="dosage-badge">10-30 g/L</span>
+                                <div class="product-item-body">
+                                    <div style="font-size:0.88rem; font-weight:700; color:var(--gray-800); margin-bottom:2px;">NOMZSIL S300</div>
+                                    <div style="font-size:0.75rem; color:var(--gray-600);">Hydrophilic Micro Silicon</div>
                                 </div>
+                                <span class="dosage-badge">10-30 g/L</span>
                             </div>
                             <div class="product-item">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <div class="text-sm font-semibold text-slate-800">NOMZSIL SE</div>
-                                        <div class="text-xs text-slate-600">Hydrophilic Macro Silicon</div>
-                                    </div>
-                                    <span class="dosage-badge">15-40 g/L</span>
+                                <div class="product-item-body">
+                                    <div style="font-size:0.88rem; font-weight:700; color:var(--gray-800); margin-bottom:2px;">NOMZSIL SE</div>
+                                    <div style="font-size:0.75rem; color:var(--gray-600);">Hydrophilic Macro Silicon</div>
                                 </div>
+                                <span class="dosage-badge">15-40 g/L</span>
                             </div>
                             <div class="product-item">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <div class="text-sm font-semibold text-slate-800">NOMZSIL ME</div>
-                                        <div class="text-xs text-slate-600">Hydrophobic Silicon</div>
-                                    </div>
-                                    <span class="dosage-badge">20-50 g/L</span>
+                                <div class="product-item-body">
+                                    <div style="font-size:0.88rem; font-weight:700; color:var(--gray-800); margin-bottom:2px;">NOMZSIL EPS</div>
+                                    <div style="font-size:0.75rem; color:var(--gray-600);">Hydrophilic Semi Macro Silicon</div>
                                 </div>
+                                <span class="dosage-badge">12-35 g/L</span>
                             </div>
                             <div class="product-item">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <div class="text-sm font-semibold text-slate-800">NOMZSIL OA</div>
-                                        <div class="text-xs text-slate-600">Hydrophobic Silicon</div>
-                                    </div>
-                                    <span class="dosage-badge">20-60 g/L</span>
+                                <div class="product-item-body">
+                                    <div style="font-size:0.88rem; font-weight:700; color:var(--gray-800); margin-bottom:2px;">NOMZSIL ME</div>
+                                    <div style="font-size:0.75rem; color:var(--gray-600);">Hydrophobic Silicon</div>
                                 </div>
+                                <span class="dosage-badge">20-50 g/L</span>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-item-body">
+                                    <div style="font-size:0.88rem; font-weight:700; color:var(--gray-800); margin-bottom:2px;">NOMZSIL OA</div>
+                                    <div style="font-size:0.75rem; color:var(--gray-600);">Hydrophobic Silicon</div>
+                                </div>
+                                <span class="dosage-badge">20-60 g/L</span>
                             </div>
                         </div>
                     </div>
                     <div class="card product-card" data-aos="fade-up" data-aos-delay="200" data-category="softeners" style="display:block;">
                         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.25rem;">
-                            <div style="display:flex; align-items:center; gap:10px; color:var(--blue-800);">
+                            <div style="display:flex; align-items:center; gap:10px; color:var(--green-600);">
                                 <i class="fa-solid fa-snowflake" style="font-size:1.3rem;"></i>
                                 <h3 style="font-family:var(--font-head); font-size:1.05rem; font-weight:700;">Softeners &amp; Fixers</h3>
                             </div>
                             <span class="application-tag">Post-Treatment</span>
                         </div>
-                        <div class="space-y-1">
+                        <div style="display:flex; flex-direction:column; gap:0.25rem;">
                             <div class="product-item">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <div class="text-sm font-semibold text-slate-800">NOMZSOFT S8</div>
-                                        <div class="text-xs text-slate-600">Silicon Based Softener</div>
-                                    </div>
-                                    <span class="dosage-badge">15-40 g/L</span>
+                                <div class="product-item-body">
+                                    <div style="font-size:0.88rem; font-weight:700; color:var(--gray-800); margin-bottom:2px;">NOMZSOFT S8</div>
+                                    <div style="font-size:0.75rem; color:var(--gray-600);">Silicon Based Softener</div>
                                 </div>
+                                <span class="dosage-badge">15-40 g/L</span>
                             </div>
                             <div class="product-item">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <div class="text-sm font-semibold text-slate-800">NOMZFIX FE</div>
-                                        <div class="text-xs text-slate-600">Formaldehyde Free Fixing Agent</div>
-                                    </div>
-                                    <span class="dosage-badge">1-3% owf</span>
+                                <div class="product-item-body">
+                                    <div style="font-size:0.88rem; font-weight:700; color:var(--gray-800); margin-bottom:2px;">NOMZFIX FE</div>
+                                    <div style="font-size:0.75rem; color:var(--gray-600);">Formaldehyde Free Fixing Agent</div>
                                 </div>
+                                <span class="dosage-badge">1-3% owf</span>
                             </div>
                             <div class="product-item">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <div class="text-sm font-semibold text-slate-800">NOMZFIX FE BX</div>
-                                        <div class="text-xs text-slate-600">Formaldehyde Based Fixer</div>
-                                    </div>
-                                    <span class="dosage-badge">1-2.5% owf</span>
+                                <div class="product-item-body">
+                                    <div style="font-size:0.88rem; font-weight:700; color:var(--gray-800); margin-bottom:2px;">NOMZFIX FE BX</div>
+                                    <div style="font-size:0.75rem; color:var(--gray-600);">Formaldehyde Based Fixer</div>
                                 </div>
+                                <span class="dosage-badge">1-2.5% owf</span>
                             </div>
                         </div>
                     </div>
@@ -1446,8 +1457,10 @@
     </main>
 
     <!-- ═══ FOOTER ════════════════════════════════════════════════ -->
-    <footer id="contact" class="site-footer">
-        <div class="footer-inner">
+    <footer id="contact" class="site-footer" style="position:relative;">
+        <!-- Drums background image with dark overlay -->
+        <div style="position:absolute; inset:0; background:url('drums.png') center/cover no-repeat; opacity:0.07; pointer-events:none; z-index:0;"></div>
+        <div class="footer-inner" style="position:relative; z-index:1;">
             <div class="footer-grid">
                 <!-- Brand column -->
                 <div>
