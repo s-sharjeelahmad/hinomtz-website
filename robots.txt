@@ -1,0 +1,7 @@
+# robots.txt — HINOMTZ PolyChem Zone
+# https://hinomtzpolychemzone.com
+
+User-agent: *
+Allow: /
+
+Sitemap: https://hinomtzpolychemzone.com/sitemap.xml
